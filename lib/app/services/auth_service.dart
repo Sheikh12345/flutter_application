@@ -6,6 +6,7 @@ import 'settings_service.dart';
 
 
 class AuthService extends GetxService {
+
   final user = User().obs;
   GetStorage _box;
 

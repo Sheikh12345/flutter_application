@@ -21,6 +21,7 @@ class TranslationService extends GetxService {
   // the assets/locales folder must contains file for each language that named
   // with the code of language concatenate with the country code
   // for example (en_US.json)
+
   Future<TranslationService> init() async {
     languages.forEach((lang) async {
       var _file = await Helper.getJsonFile('assets/locales/${lang}.json');

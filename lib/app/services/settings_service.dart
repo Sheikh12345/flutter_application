@@ -64,7 +64,8 @@ class SettingsService extends GetxService {
             bodyText1: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Ui.parseColor(setting.value.secondColor), height: 1.2),
             caption: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w300, color: Ui.parseColor(setting.value.accentColor), height: 1.2),
           ),
-        ));
+        ),
+      );
   }
 
   ThemeData getDarkTheme() {

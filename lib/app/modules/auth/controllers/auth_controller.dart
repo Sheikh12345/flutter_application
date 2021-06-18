@@ -11,6 +11,7 @@ import '../../root/controllers/root_controller.dart';
 
 class AuthController extends GetxController {
   final Rx<User> currentUser = Get.find<AuthService>().user;
+
   GlobalKey<FormState> loginFormKey;
   GlobalKey<FormState> registerFormKey;
   final hidePassword = true.obs;
@@ -19,6 +20,7 @@ class AuthController extends GetxController {
   UserRepository _userRepository;
 
   AuthController() {
+    Get.put(RootController());
     loginFormKey = new GlobalKey<FormState>();
     registerFormKey = new GlobalKey<FormState>();
     _userRepository = UserRepository();

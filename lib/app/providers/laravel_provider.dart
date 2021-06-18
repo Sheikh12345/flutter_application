@@ -65,7 +65,6 @@ class LaravelApiClient extends GetxService with ApiClient {
   }
 
   Future<List<Slide>> getHomeSlider() async {
-
     Uri _uri = getApiBaseUri("slides");
     Get.log(_uri.toString());
 
@@ -84,6 +83,7 @@ class LaravelApiClient extends GetxService with ApiClient {
     var _queryParameters = {
       'api_token': authService.apiToken,
     };
+
     Uri _uri = getApiBaseUri("user").replace(queryParameters: _queryParameters);
     Get.log(_uri.toString());
     var response = await _httpClient.getUri(
