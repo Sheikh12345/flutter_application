@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:home_services/app/modules/home/controllers/home_controller.dart';
 
 import '../../../../common/ui.dart';
 import '../../../models/user_model.dart';
@@ -21,6 +22,7 @@ class AuthController extends GetxController {
 
   AuthController() {
     Get.put(RootController());
+    Get.put(HomeController());
     loginFormKey = new GlobalKey<FormState>();
     registerFormKey = new GlobalKey<FormState>();
     _userRepository = UserRepository();
