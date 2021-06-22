@@ -32,6 +32,8 @@ dependencies:
       ref: feature/nullsafety-dio4
   # FONT
   google_fonts: 2.1.0
+  font_awesome_flutter:
+  line_icons: ^2.0.1
   #IMAGES, SLIDERS, LAYOUTS
   cached_network_image: 3.0.0
   carousel_slider: 3.0.0

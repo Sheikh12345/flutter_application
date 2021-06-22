@@ -13,7 +13,7 @@ class AuthBinding extends Bindings {
     );
 
     Get.lazyPut<HomeController>(
-        ()=> HomeController(),
+        () => HomeController(),
       fenix: true
     );
 
