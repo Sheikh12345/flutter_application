@@ -10,6 +10,7 @@ import '../controllers/category_controller.dart';
 import '../widgets/services_list_widget.dart';
 
 class CategoryView extends GetView<CategoryController> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

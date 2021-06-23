@@ -25,7 +25,8 @@ class CategoriesCarouselWidget extends GetWidget<HomeController> {
               var _category = controller.categories.elementAt(index);
               return InkWell(
                 onTap: () {
-                  Get.toNamed(Routes.CATEGORY, arguments: _category);
+                  Get.toNamed(Routes.CATEGORIES,arguments: "${_category.name}");
+                  // Get.toNamed(Routes.CATEGORY, arguments: _category);
                 },
                 child: Container(
                   width: size.width * 0.45,

@@ -44,6 +44,7 @@ class CategoryListItemWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+
                   SizedBox(
                     width: 60,
                     height: 60,
@@ -63,7 +64,9 @@ class CategoryListItemWidget extends StatelessWidget {
                             errorWidget: (context, url, error) => Icon(Icons.error_outline),
                           )),
                   ),
+
                   SizedBox(width: 10),
+
                   Expanded(
                     child: Text(
                       category.name,

@@ -22,7 +22,6 @@ class RootView extends GetView<RootController> {
 
 
         BottomNavigationBar(
-
           showUnselectedLabels: true,
           unselectedLabelStyle:  GoogleFonts.roboto(
               color:context.theme.accentColor,
