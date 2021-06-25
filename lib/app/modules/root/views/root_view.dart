@@ -41,7 +41,7 @@ class RootView extends GetView<RootController> {
           unselectedItemColor:context.theme.accentColor,
           currentIndex: controller.currentIndex.value,
           onTap: (index){
-            controller.changePage(index);
+            controller.changePage(int.parse(index.toString()));
           },
           backgroundColor: context.theme.scaffoldBackgroundColor,
           items: [

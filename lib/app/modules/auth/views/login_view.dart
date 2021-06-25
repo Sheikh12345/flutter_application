@@ -15,6 +15,8 @@ import '../controllers/auth_controller.dart';
 class LoginView extends GetView<AuthController> {
   final Setting _settings = Get.find<SettingsService>().setting.value;
 
+
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,7 +37,6 @@ class LoginView extends GetView<AuthController> {
         // ),
       ),
       body: Form(
-        key: controller.loginFormKey,
         child: ListView(
           primary: true,
           children: [

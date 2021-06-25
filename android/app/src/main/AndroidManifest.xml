@@ -13,12 +13,12 @@
          FlutterApplication and put your custom class here. -->
     <application
             android:name="io.flutter.app.FlutterApplication"
-            android:label="Services Provider"
+            android:label="EAZE"
             android:icon="@mipmap/ic_launcher"
             android:usesCleartextTraffic="true">
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-                   android:value="AIzaSyDdyth2EiAjU9m9eE_obC5fnTY1yeVNTJU"/>
+                   android:value="AIzaSyAyFpnMSGsPBifXSact7wljdCtiRfNVRWs"/>
 
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_icon"

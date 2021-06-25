@@ -31,7 +31,7 @@ void main() async {
 
   runApp(
     GetMaterialApp(
-      title: Get.find<SettingsService>().setting.value.appName,
+      title:"EAZE",
       initialRoute: Theme1AppPages.INITIAL,
       getPages: Theme1AppPages.routes,
       localizationsDelegates: [GlobalMaterialLocalizations.delegate],

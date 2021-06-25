@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter/foundation.dart' as foundation;
+import 'package:flutter/material.dart' as color;
 import 'package:get/get.dart';
 import '../models/address_model.dart';
 import '../models/award_model.dart';
@@ -27,6 +28,8 @@ import '../models/slide_model.dart';
 import '../models/user_model.dart';
 import '../services/settings_service.dart';
 import 'api_provider.dart';
+import 'dart:io';
+
 
 class LaravelApiClient extends GetxService with ApiClient {
   Dio _httpClient;
@@ -39,15 +42,24 @@ class LaravelApiClient extends GetxService with ApiClient {
   }
 
   Future<LaravelApiClient> init() async {
-    if (foundation.kIsWeb || foundation.kDebugMode) {
-      _optionsNetwork = Options();
-      _optionsCache = Options();
-    } else {
-      _optionsNetwork = buildCacheOptions(Duration(days: 3), forceRefresh: true);
-      _optionsCache = buildCacheOptions(Duration(minutes: 10), forceRefresh: false);
-      _httpClient.interceptors.add(DioCacheManager(CacheConfig(baseUrl: getApiBaseUrl(""))).interceptor);
+    try {
+      final result = await InternetAddress.lookup('www.google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        if (foundation.kIsWeb || foundation.kDebugMode) {
+          _optionsNetwork = Options();
+          _optionsCache = Options();
+        } else {
+          _optionsNetwork = buildCacheOptions(Duration(days: 3), forceRefresh: true);
+          _optionsCache = buildCacheOptions(Duration(minutes: 10), forceRefresh: false);
+          _httpClient.interceptors.add(DioCacheManager(CacheConfig(baseUrl: getApiBaseUrl(""))).interceptor);
+        }
+        return this;
+      }
+    } on SocketException catch (_) {
+      Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
     }
-    return this;
+
+
   }
 
   void forceRefresh({Duration duration = const Duration(minutes: 10)}) {
@@ -96,35 +108,60 @@ class LaravelApiClient extends GetxService with ApiClient {
   }
 
   Future<User> login(User user) async {
-    Uri _uri = getApiBaseUri("login");
-    Get.log(_uri.toString());
-    var response = await _httpClient.postUri(
-      _uri,
-      data: json.encode(user.toJson()),
-      options: _optionsNetwork,
-    );
-    if (response.data['success'] == true) {
-      response.data['data']['auth'] = true;
-      return User.fromJson(response.data['data']);
-    } else {
-      throw new Exception(response.data['message']);
+
+    try {
+      final result = await InternetAddress.lookup('www.google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        Uri _uri = getApiBaseUri("login");
+        Get.log(_uri.toString());
+        var response = await _httpClient.postUri(
+          _uri,
+          data: json.encode(user.toJson()),
+          options: _optionsNetwork,
+        );
+        if (response.data['success'] == true) {
+          response.data['data']['auth'] = true;
+          return User.fromJson(response.data['data']);
+        } else {
+          throw new Exception(response.data['message']);
+        }
+      }else{
+        Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+      }
+    } on SocketException catch (_) {
+      Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+      print('not connected');
     }
   }
 
   Future<User> register(User user) async {
-    Uri _uri = getApiBaseUri("register");
-    Get.log(_uri.toString());
-    var response = await _httpClient.postUri(
-      _uri,
-      data: json.encode(user.toJson()),
-      options: _optionsNetwork,
-    );
-    if (response.data['success'] == true) {
-      response.data['data']['auth'] = true;
-      return User.fromJson(response.data['data']);
-    } else {
-      throw new Exception(response.data['message']);
+
+    try {
+      final result = await InternetAddress.lookup('www.google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+
+        Uri _uri = getApiBaseUri("register");
+        Get.log(_uri.toString());
+        var response = await _httpClient.postUri(
+          _uri,
+          data: json.encode(user.toJson()),
+          options: _optionsNetwork,
+        );
+        if (response.data['success'] == true) {
+          response.data['data']['auth'] = true;
+          return User.fromJson(response.data['data']);
+        } else {
+          throw new Exception(response.data['message']);
+        }
+      }else{
+        Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+      }
+    } on SocketException catch (_) {
+      Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+      print('not connected');
     }
+
+
   }
 
   Future<User> updateUser(User user) async {

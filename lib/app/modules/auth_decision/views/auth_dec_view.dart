@@ -152,8 +152,7 @@ class _AuthDecViewState extends State<AuthDecView> {
                         ),
                         GestureDetector(
                           onTap: (){
-                           Get.snackbar("Alert", "Under Development",
-                           backgroundColor: Colors.white);
+                       Get.offNamed(Routes.ROOT_WITH_AUTH);
                           },
                           child: Container(
                             margin: EdgeInsets.only(bottom: size.height*0.02),

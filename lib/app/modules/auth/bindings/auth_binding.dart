@@ -7,17 +7,11 @@ import '../controllers/auth_controller.dart';
 class AuthBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<AuthController>(
-      () => AuthController(),
-       fenix: true
+    Get.put<AuthController>(AuthController(),
     );
+    Get.put<HomeController>(HomeController(),);
+    Get.put<RootController>( RootController());
 
-    Get.lazyPut<HomeController>(
-        () => HomeController(),
-      fenix: true
-    );
 
-    Get.lazyPut<RootController>(() => RootController(),
-    fenix: true);
   }
 }

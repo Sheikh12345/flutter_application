@@ -218,6 +218,7 @@ class CategoriesView extends GetView<CategoriesController> {
               FeaturedCategoriesWidget(),
             ],
           ),
-        ));
+        ),
+    );
   }
 }

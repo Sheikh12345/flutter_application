@@ -17,7 +17,6 @@ class RegisterView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -57,10 +56,10 @@ class RegisterView extends GetView<AuthController> {
                     child: Column(
                       children: [
                         Container(
-                          width: size.width*0.4,
+                          width:140,
                           child: Text(
                             "Beauty_&_Events_Management_App".tr,
-                            style: Get.textTheme.caption.merge(TextStyle(color: Get.theme.primaryColor,fontWeight: FontWeight.w700,fontSize: size.width*0.0345)),
+                            style: Get.textTheme.caption.merge(TextStyle(color: Get.theme.primaryColor,fontWeight: FontWeight.w700,fontSize: 15)),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -181,13 +180,13 @@ class RegisterView extends GetView<AuthController> {
               ),
               TextButton(
                 onPressed: () {
-                  Get.offAllNamed(Routes.LOGIN);
+                  Get.back();
                 },
                 child:Row(
                   children: [
                     Text("You already have an account?".tr),
                     SizedBox(
-                      width: size.width*0.013,
+                      width: 5,
                     ),
                     Text("Login".tr,style: TextStyle(
                       color: Colors.pinkAccent,

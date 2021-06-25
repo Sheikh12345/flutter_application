@@ -60,7 +60,7 @@ class RootController extends GetxController {
 
   Future<void> changePageOutRoot(int _index) async {
     if (!Get.find<AuthService>().isAuth && _index > 0) {
-      await Get.toNamed(Routes.LOGIN);
+      await Get.offAllNamed(Routes.LOGIN);
     }
     currentIndex.value = _index;
     await refreshPage(_index);
