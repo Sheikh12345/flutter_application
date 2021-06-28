@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home_services/app/modules/root/bindings/root_binding.dart';
+import 'package:home_services/app/modules/root/views/root_view.dart';
 import '../../../routes/app_routes.dart';
 import '../../../services/auth_service.dart';
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
@@ -152,8 +154,9 @@ class _AuthDecViewState extends State<AuthDecView> {
                         ),
                         GestureDetector(
                           onTap: (){
-                       Get.offNamed(Routes.ROOT_WITH_AUTH);
-                          },
+                            Get.to(() => RootView(),binding: RootBinding());
+// Get.offAndToNamed(Routes.ROOT_WITH_AUTH);
+},
                           child: Container(
                             margin: EdgeInsets.only(bottom: size.height*0.02),
                             alignment: Alignment.center,

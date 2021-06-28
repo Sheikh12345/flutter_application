@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -108,7 +110,18 @@ class PhoneVerificationView extends GetView<AuthController> {
                       ),
                       BlockButtonWidget(
                         onPressed: () async {
-                          await controller.verifyPhone();
+                          try {
+                            final result = await InternetAddress.lookup('www.google.com');
+                            if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+                              await controller.verifyPhone();
+                            }else{
+                              Get.snackbar("Alert","Network error",backgroundColor: Colors.red,colorText:Colors.white);
+                            }
+                          } on SocketException catch (_) {
+                            Get.snackbar("Alert","Network error",backgroundColor: Colors.red,colorText:Colors.white);
+                          }
+
+
                         },
                         color: Get.theme.accentColor,
                         text: Text(
@@ -120,8 +133,18 @@ class PhoneVerificationView extends GetView<AuthController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextButton(
-                            onPressed: () {
-                              controller.resendOTPCode();
+                            onPressed: ()async {
+                              try {
+                                final result = await InternetAddress.lookup('www.google.com');
+                                if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+                                  controller.resendOTPCode();
+                                }else{
+                                  Get.snackbar("Alert","Network error",backgroundColor: Colors.red,colorText:Colors.white);
+                                }
+                              } on SocketException catch (_) {
+                                Get.snackbar("Alert","Network error",backgroundColor: Colors.red,colorText:Colors.white);
+                              }
+
                             },
                             child: Text("Resend the OTP Code Again".tr),
                           ),

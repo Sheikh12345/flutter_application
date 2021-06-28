@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -167,8 +169,18 @@ class RegisterView extends GetView<AuthController> {
               SizedBox(
                 width: Get.width,
                 child: BlockButtonWidget(
-                  onPressed: () {
-                    controller.register();
+                  onPressed: ()async {
+                    try {
+                      final result = await InternetAddress.lookup('www.google.com');
+                      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+                        controller.register();
+                      }else{
+                        Get.snackbar("Alert","Network error",backgroundColor: Colors.red,colorText:Colors.white);
+                      }
+                    } on SocketException catch (_) {
+                      Get.snackbar("Alert","Network error",backgroundColor: Colors.red,colorText:Colors.white);
+                    }
+
                     //Get.offAllNamed(Routes.PHONE_VERIFICATION);
                   },
                   color: Get.theme.accentColor,

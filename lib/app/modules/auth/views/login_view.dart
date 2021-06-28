@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +21,7 @@ class LoginView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -37,6 +40,7 @@ class LoginView extends GetView<AuthController> {
         // ),
       ),
       body: Form(
+        key: controller.loginFormKey,
         child: ListView(
           primary: true,
           children: [
@@ -139,8 +143,18 @@ class LoginView extends GetView<AuthController> {
                       ],
                     ).paddingSymmetric(horizontal: 20),
                     BlockButtonWidget(
-                      onPressed: () {
-                        controller.login();
+                      onPressed: ()async {
+                        try {
+                          final result = await InternetAddress.lookup('www.google.com');
+                          if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+                            controller.login();
+                          }else{
+                            Get.snackbar("Alert","Network error",backgroundColor: Colors.red,colorText:Colors.white);
+                          }
+                        } on SocketException catch (_) {
+                          Get.snackbar("Alert","Network error",backgroundColor: Colors.red,colorText:Colors.white);
+                        }
+
                       },
                       color: Get.theme.accentColor,
                       text: Text(

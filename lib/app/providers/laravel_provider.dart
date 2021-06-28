@@ -36,7 +36,7 @@ class LaravelApiClient extends GetxService with ApiClient {
   Options _optionsNetwork;
   Options _optionsCache;
 
-  LaravelApiClient() {
+  LaravelApiClient(){
     this.baseUrl = this.globalService.global.value.laravelBaseUrl;
     _httpClient = new Dio();
   }
@@ -56,7 +56,7 @@ class LaravelApiClient extends GetxService with ApiClient {
         return this;
       }
     } on SocketException catch (_) {
-      Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+      Get.snackbar("Alert","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
     }
 
 
@@ -126,10 +126,10 @@ class LaravelApiClient extends GetxService with ApiClient {
           throw new Exception(response.data['message']);
         }
       }else{
-        Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+        Get.snackbar("Alert","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
       }
     } on SocketException catch (_) {
-      Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+      Get.snackbar("Alert","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
       print('not connected');
     }
   }
@@ -154,10 +154,10 @@ class LaravelApiClient extends GetxService with ApiClient {
           throw new Exception(response.data['message']);
         }
       }else{
-        Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+        Get.snackbar("Alert","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
       }
     } on SocketException catch (_) {
-      Get.snackbar("Error","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
+      Get.snackbar("Alert","Network error",backgroundColor:color. Colors.red,colorText: color.Colors.white);
       print('not connected');
     }
 
